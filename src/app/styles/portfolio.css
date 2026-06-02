@@ -33,35 +33,11 @@ body {
   right: 0;
   bottom: 0;
   background:
-    radial-gradient(circle at 20% 30%, rgba(100, 100, 255, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(255, 100, 150, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 50% 50%, rgba(150, 255, 150, 0.05) 0%, transparent 50%);
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
-  animation: backgroundPulse 15s ease-in-out infinite;
-}
-
-.portfolio-container::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image:
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.01) 0px, transparent 1px, transparent 80px, rgba(255, 255, 255, 0.01) 81px),
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.01) 0px, transparent 1px, transparent 80px, rgba(255, 255, 255, 0.01) 81px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-@keyframes backgroundPulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.6;
-  }
 }
 
 /* Hero Section */
@@ -137,24 +113,9 @@ body {
   left: -10px;
   right: -10px;
   bottom: -10px;
-  border: 2px solid transparent;
+  border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 50%;
-  background: linear-gradient(45deg, rgba(100, 100, 255, 0.4), rgba(255, 100, 150, 0.4), rgba(150, 255, 150, 0.4), rgba(100, 100, 255, 0.4));
-  background-size: 300% 300%;
-  animation: rotate 20s linear infinite, gradientShift 8s ease infinite;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  padding: 2px;
-}
-
-@keyframes gradientShift {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
+  animation: rotate 20s linear infinite;
 }
 
 .hero-title {
@@ -162,23 +123,10 @@ body {
   font-weight: 700;
   letter-spacing: -2px;
   margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, #ffffff 0%, rgba(100, 100, 255, 0.8) 50%, rgba(255, 100, 150, 0.8) 100%);
-  background-size: 200% 200%;
+  background: linear-gradient(135deg, #ffffff 0%, #999999 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: titleGradient 8s ease infinite;
-  position: relative;
-  text-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
-}
-
-@keyframes titleGradient {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
 }
 
 .hero-name {
@@ -186,21 +134,8 @@ body {
   font-weight: 400;
   color: #cccccc;
   margin-bottom: 1rem;
-  letter-spacing: 4px;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  animation: fadeInGlow 2s ease-out;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-}
-
-@keyframes fadeInGlow {
-  0% {
-    opacity: 0;
-    text-shadow: 0 0 0 rgba(255, 255, 255, 0);
-  }
-  100% {
-    opacity: 1;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-  }
 }
 
 .title-underline {
@@ -299,14 +234,12 @@ body {
   cursor: pointer;
   position: relative;
   transition: all 0.3s ease;
-  border-radius: 50px;
-  overflow: hidden;
+  border-radius: 12px;
 }
 
 .tab-button span {
   position: relative;
   z-index: 1;
-  transition: all 0.3s ease;
 }
 
 .tab-button::before {
@@ -314,59 +247,34 @@ body {
   position: absolute;
   inset: 0;
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 50px;
+  border-radius: 12px;
   opacity: 0;
-  transition: all 0.3s ease;
-  transform: scale(0.8);
+  transition: opacity 0.3s ease;
 }
 
 .tab-button:hover::before {
   opacity: 1;
-  transform: scale(1);
-}
-
-.tab-button:hover {
-  color: #ffffff;
-  transform: translateY(-2px);
 }
 
 .tab-button.active {
   color: #ffffff;
-  background: linear-gradient(135deg, rgba(100, 100, 255, 0.3) 0%, rgba(255, 100, 150, 0.3) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 25px rgba(100, 100, 255, 0.3);
-}
-
-.tab-button.active::before {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
-  opacity: 1;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .tab-indicator {
   position: absolute;
-  bottom: -2px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%) scaleX(0);
-  width: 70%;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, rgba(100, 100, 255, 1), rgba(255, 100, 150, 1), transparent);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(100, 100, 255, 0.8);
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffffff, transparent);
+  transition: transform 0.3s ease;
 }
 
 .tab-button.active .tab-indicator {
   transform: translateX(-50%) scaleX(1);
-  animation: indicatorGlow 2s ease-in-out infinite;
-}
-
-@keyframes indicatorGlow {
-  0%, 100% {
-    box-shadow: 0 0 15px rgba(100, 100, 255, 0.8);
-  }
-  50% {
-    box-shadow: 0 0 25px rgba(255, 100, 150, 1);
-  }
 }
 
 .tab-content-wrapper {
@@ -396,7 +304,7 @@ body {
 .project-card {
   background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
+  border-radius: 12px;
   padding: 1.5rem;
   position: relative;
   overflow: hidden;
@@ -415,39 +323,9 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(100, 100, 255, 0.1) 0%, rgba(255, 100, 150, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
   opacity: 0;
   transition: opacity 0.4s ease;
-}
-
-.project-card::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    rgba(100, 100, 255, 0.3) 45deg,
-    rgba(255, 100, 150, 0.3) 90deg,
-    transparent 135deg,
-    transparent 360deg
-  );
-  opacity: 0;
-  transition: opacity 0.6s ease;
-  animation: cardRotate 8s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes cardRotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
 
 .project-glow {
@@ -456,42 +334,24 @@ body {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(150, 255, 150, 0.2) 0%, transparent 50%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
   opacity: 0;
   transition: opacity 0.6s ease;
   pointer-events: none;
 }
 
 .project-card:hover {
-  transform: translateY(-12px) scale(1.03);
-  border-color: rgba(255, 255, 255, 0.4);
-  box-shadow:
-    0 20px 60px rgba(100, 100, 255, 0.2),
-    0 0 80px rgba(255, 100, 150, 0.1);
+  transform: translateY(-10px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 60px rgba(255, 255, 255, 0.15);
 }
 
 .project-card:hover::before {
   opacity: 1;
 }
 
-.project-card:hover::after {
-  opacity: 0.5;
-}
-
 .project-card:hover .project-glow {
   opacity: 1;
-  animation: glowPulse 2s ease-in-out infinite;
-}
-
-@keyframes glowPulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 0.6;
-  }
 }
 
 .project-description {
@@ -499,10 +359,9 @@ body {
   font-size: 0.95rem;
   line-height: 1.6;
   margin-top: 0.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 3rem;
   position: relative;
   z-index: 1;
-  flex-grow: 1;
 }
 
 .special-card {
@@ -589,180 +448,165 @@ body {
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
-/* Project Preview Iframe */
-.project-preview-wrapper {
+/* Project Preview */
+.project-preview {
   width: 100%;
-  height: 240px;
-  margin-bottom: 1.5rem;
+  height: 200px;
   position: relative;
+  border-radius: 8px;
   overflow: hidden;
-  border-radius: 12px;
-  background:
-    linear-gradient(135deg, rgba(20, 20, 40, 1) 0%, rgba(10, 10, 20, 1) 100%),
-    repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(100, 100, 255, 0.03) 10px, rgba(100, 100, 255, 0.03) 20px);
-  border: 1px solid rgba(100, 100, 255, 0.2);
-  transition: all 0.4s ease;
-  box-shadow:
-    inset 0 0 40px rgba(0, 0, 0, 0.5),
-    0 0 20px rgba(100, 100, 255, 0.1);
+  margin-bottom: 1rem;
+  background: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.project-preview-wrapper::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 30% 40%, rgba(100, 100, 255, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 70% 60%, rgba(255, 100, 150, 0.15) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.6;
-  animation: previewGlow 6s ease-in-out infinite;
+.special-preview {
+  height: 250px;
 }
 
-@keyframes previewGlow {
-  0%, 100% {
-    opacity: 0.6;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-.project-preview-wrapper::after {
-  content: '🎮';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 3rem;
-  opacity: 0.3;
-  z-index: 1;
-  pointer-events: none;
-  animation: iconFloat 3s ease-in-out infinite;
-}
-
-@keyframes iconFloat {
-  0%, 100% {
-    transform: translate(-50%, -50%);
-  }
-  50% {
-    transform: translate(-50%, calc(-50% - 10px));
-  }
-}
-
-.project-card:hover .project-preview-wrapper::before {
-  opacity: 1;
-}
-
-.special-preview-wrapper {
-  height: 300px;
-  border: 2px solid rgba(255, 100, 150, 0.3);
-  box-shadow:
-    inset 0 0 40px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(255, 100, 150, 0.15);
-}
-
-.special-preview-wrapper::after {
-  content: '⭐';
-  font-size: 4rem;
-}
-
-.project-preview-iframe {
+.project-iframe {
   width: 100%;
   height: 100%;
   border: none;
-  background: transparent;
-  pointer-events: auto;
-  display: block;
-  position: relative;
-  z-index: 2;
+  pointer-events: none;
+  transform: scale(0.8);
+  transform-origin: top left;
+  width: 125%;
+  height: 125%;
 }
 
-.project-card:hover .project-preview-wrapper {
-  border-color: rgba(100, 100, 255, 0.4);
-  box-shadow:
-    0 12px 35px rgba(100, 100, 255, 0.3),
-    inset 0 0 50px rgba(0, 0, 0, 0.3),
-    0 0 40px rgba(255, 100, 150, 0.2);
-  transform: translateY(-4px) scale(1.02);
-}
-
-.project-footer {
+.preview-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: auto;
-  padding-top: 1rem;
-}
-
-.project-link-button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, rgba(100, 100, 255, 0.2) 0%, rgba(255, 100, 150, 0.2) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 50px;
-  color: #ffffff;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(100, 100, 255, 0.3);
-}
-
-.project-link-button::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
+  backdrop-filter: blur(2px);
 }
 
-.project-link-button:hover::before {
+.project-card:hover .preview-overlay {
   opacity: 1;
 }
 
-.project-link-button:hover {
-  background: linear-gradient(135deg, rgba(100, 100, 255, 0.8) 0%, rgba(255, 100, 150, 0.8) 100%);
-  border-color: rgba(255, 255, 255, 0.5);
-  transform: translateY(-3px) scale(1.05);
-  box-shadow:
-    0 12px 30px rgba(100, 100, 255, 0.4),
-    0 0 30px rgba(255, 100, 150, 0.3);
+.preview-button {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.project-link-button svg {
-  transition: transform 0.3s ease;
+.preview-button:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: scale(1.05);
 }
 
-.project-link-button:hover svg {
+.project-arrow {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  color: inherit;
+}
+
+.project-card:hover .project-arrow {
+  background: #ffffff;
+  color: #000000;
+  transform: rotate(45deg) scale(1.15);
+  border-color: #ffffff;
+}
+
+.special-arrow {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+}
+
+.special-card:hover .special-arrow {
+  background: #ffffff;
+  color: #000000;
   transform: rotate(45deg) scale(1.2);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
-.special-link-button {
-  background: linear-gradient(135deg, rgba(255, 100, 150, 0.3) 0%, rgba(150, 255, 150, 0.3) 100%);
-  border-color: rgba(255, 255, 255, 0.3);
-  padding: 0.875rem 1.75rem;
-  box-shadow: 0 6px 20px rgba(255, 100, 150, 0.4);
+/* Preview Modal */
+.preview-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: fadeIn 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
-.special-link-button:hover {
-  background: linear-gradient(135deg, rgba(255, 100, 150, 1) 0%, rgba(150, 255, 150, 1) 100%);
-  box-shadow:
-    0 15px 40px rgba(255, 100, 150, 0.5),
-    0 0 40px rgba(150, 255, 150, 0.4);
-  transform: translateY(-4px) scale(1.08);
+.preview-modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  height: 90vh;
+  background: #0a0a0a;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+  animation: scaleIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.preview-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  color: #ffffff;
+  backdrop-filter: blur(10px);
+}
 
+.preview-close:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: rotate(90deg);
+}
+
+.preview-modal-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
 
 /* Scroll to Top Button */
 .scroll-to-top {
@@ -973,6 +817,17 @@ body {
   }
 }
 
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .hero-title {
@@ -1062,14 +917,23 @@ body {
 
   .project-description {
     font-size: 0.875rem;
+    margin-bottom: 2.5rem;
   }
 
-  .project-preview-wrapper {
+  .project-preview {
+    height: 160px;
+  }
+
+  .special-preview {
     height: 200px;
   }
 
-  .special-preview-wrapper {
-    height: 240px;
+  .preview-modal {
+    padding: 1rem;
+  }
+
+  .preview-modal-content {
+    height: 80vh;
   }
 
   .about-card {
@@ -1085,14 +949,5 @@ body {
     height: 48px;
     bottom: 1.5rem;
     right: 1.5rem;
-  }
-
-  .project-link-button {
-    font-size: 0.75rem;
-    padding: 0.65rem 1.25rem;
-  }
-
-  .special-link-button {
-    padding: 0.75rem 1.5rem;
   }
 }
