@@ -5,7 +5,6 @@ import './styles/portfolio.css';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<'main' | 'special'>('main');
-  const [previewProject, setPreviewProject] = useState<string | null>(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -21,24 +20,36 @@ export default function App() {
   };
 
   const mainProjects = [
-    { id: 1, name: 'MyProject 1', url: 'http://193.137.7.33/~aluno28377/MyProject1/', description: 'Mecânicas de gameplay inovadoras' },
-    { id: 2, name: 'MyProject 2', url: 'http://193.137.7.33/~aluno28377/MyProject2/', description: 'Física avançada e interatividade' },
-    { id: 3, name: 'MyProject 3', url: 'http://193.137.7.33/~aluno28377/MyProject3/', description: 'Sistemas de inteligência artificial' },
-    { id: 4, name: 'MyProject 4', url: 'http://193.137.7.33/~aluno28377/MyProject4/', description: 'Interface e experiência do usuário' },
-    { id: 5, name: 'MyProject 5', url: 'http://193.137.7.33/~aluno28377/MyProject5/', description: 'Partículas e efeitos visuais' },
-    { id: 6, name: 'MyProject 6', url: 'http://193.137.7.33/~aluno28377/MyProject6/', description: 'Animações e cinemática' },
-    { id: 7, name: 'MyProject 8', url: 'http://193.137.7.33/~aluno28377/MyProject8/', description: 'Mecânicas multiplayer' },
-    { id: 8, name: 'MyProject 9', url: 'http://193.137.7.33/~aluno28377/MyProject9/', description: 'Otimização e performance' },
-    { id: 9, name: 'MyProject 10', url: 'http://193.137.7.33/~aluno28377/MyProject10/', description: 'Jogo interativo completo' }
+    { id: 1, name: 'MyProject 1', url: 'http://193.137.7.33/~aluno28377/MyProject1/', description: 'Mecânicas de gameplay inovadoras', icon: '🎮' },
+    { id: 2, name: 'MyProject 2', url: 'http://193.137.7.33/~aluno28377/MyProject2/', description: 'Física avançada e interatividade', icon: '⚡' },
+    { id: 3, name: 'MyProject 3', url: 'http://193.137.7.33/~aluno28377/MyProject3/', description: 'Sistemas de inteligência artificial', icon: '🤖' },
+    { id: 4, name: 'MyProject 4', url: 'http://193.137.7.33/~aluno28377/MyProject4/', description: 'Interface e experiência do usuário', icon: '🎨' },
+    { id: 5, name: 'MyProject 5', url: 'http://193.137.7.33/~aluno28377/MyProject5/', description: 'Partículas e efeitos visuais', icon: '✨' },
+    { id: 6, name: 'MyProject 6', url: 'http://193.137.7.33/~aluno28377/MyProject6/', description: 'Animações e cinemática', icon: '🎬' },
+    { id: 7, name: 'MyProject 8', url: 'http://193.137.7.33/~aluno28377/MyProject8/', description: 'Mecânicas multiplayer', icon: '🌐' },
+    { id: 8, name: 'MyProject 9', url: 'http://193.137.7.33/~aluno28377/MyProject9/', description: 'Otimização e performance', icon: '⚙️' },
+    { id: 9, name: 'MyProject 10', url: 'http://193.137.7.33/~aluno28377/MyProject10/', description: 'Jogo interativo completo', icon: '🎯' }
   ];
 
   const specialProjects = [
-    { id: 1, name: 'Banner', url: 'http://193.137.7.33/~aluno28377/Banner/', description: 'Design gráfico com animações dinâmicas' },
-    { id: 2, name: 'Quiz', url: 'http://193.137.7.33/~aluno25405/Quiz/', description: 'Sistema de quiz interativo' }
+    { id: 1, name: 'Banner', url: 'http://193.137.7.33/~aluno28377/Banner/', description: 'Design gráfico com animações dinâmicas', icon: '🎪' },
+    { id: 2, name: 'Quiz', url: 'http://193.137.7.33/~aluno25405/Quiz/', description: 'Sistema de quiz interativo', icon: '❓' }
   ];
 
   return (
     <div className="portfolio-container">
+      {/* Animated Background Particles */}
+      <div className="particles">
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+      </div>
+
       {/* Header/Hero Section */}
       <header className="hero-section">
         <div className="hero-content">
@@ -99,45 +110,36 @@ export default function App() {
                 <div className="tab-content active">
                   <div className="projects-grid">
                     {mainProjects.map((project, index) => (
-                      <div
+                      <a
                         key={project.id}
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="project-card"
                         style={{ animationDelay: `${index * 0.1}s` }}
                       >
                         <div className="project-glow"></div>
                         <div className="project-number">{String(project.id).padStart(2, '0')}</div>
 
-                        <div className="project-preview">
-                          <iframe
-                            src={project.url}
-                            title={project.name}
-                            className="project-iframe"
-                            loading="lazy"
-                          />
-                          <div className="preview-overlay">
-                            <button
-                              className="preview-button"
-                              onClick={() => setPreviewProject(previewProject === project.url ? null : project.url)}
-                            >
-                              {previewProject === project.url ? 'Fechar' : 'Ver Preview'}
-                            </button>
-                          </div>
+                        <div className="project-visual">
+                          <div className="project-icon">{project.icon}</div>
+                          <div className="project-ripple"></div>
                         </div>
 
-                        <h3 className="project-name">{project.name}</h3>
-                        <p className="project-description">{project.description}</p>
+                        <div className="project-content">
+                          <h3 className="project-name">{project.name}</h3>
+                          <p className="project-description">{project.description}</p>
+                        </div>
 
-                        <a
-                          href={project.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="project-arrow"
-                        >
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                          </svg>
-                        </a>
-                      </div>
+                        <div className="project-footer">
+                          <span className="project-link-text">Explorar Projeto</span>
+                          <div className="project-arrow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                              <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                          </div>
+                        </div>
+                      </a>
                     ))}
                   </div>
                 </div>
@@ -147,8 +149,11 @@ export default function App() {
                 <div className="tab-content active">
                   <div className="projects-grid special-grid">
                     {specialProjects.map((project, index) => (
-                      <div
+                      <a
                         key={project.id}
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="project-card special-card"
                         style={{ animationDelay: `${index * 0.1}s` }}
                       >
@@ -156,37 +161,25 @@ export default function App() {
                         <div className="project-number special-number">{String(project.id).padStart(2, '0')}</div>
                         <div className="special-badge">DESTAQUE</div>
 
-                        <div className="project-preview special-preview">
-                          <iframe
-                            src={project.url}
-                            title={project.name}
-                            className="project-iframe"
-                            loading="lazy"
-                          />
-                          <div className="preview-overlay">
-                            <button
-                              className="preview-button"
-                              onClick={() => setPreviewProject(previewProject === project.url ? null : project.url)}
-                            >
-                              {previewProject === project.url ? 'Fechar' : 'Ver Preview'}
-                            </button>
-                          </div>
+                        <div className="project-visual special-visual">
+                          <div className="project-icon special-icon">{project.icon}</div>
+                          <div className="project-ripple special-ripple"></div>
                         </div>
 
-                        <h3 className="project-name">{project.name}</h3>
-                        <p className="project-description">{project.description}</p>
+                        <div className="project-content">
+                          <h3 className="project-name">{project.name}</h3>
+                          <p className="project-description">{project.description}</p>
+                        </div>
 
-                        <a
-                          href={project.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="project-arrow special-arrow"
-                        >
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                            <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                          </svg>
-                        </a>
-                      </div>
+                        <div className="project-footer">
+                          <span className="project-link-text">Explorar Projeto</span>
+                          <div className="project-arrow special-arrow">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                              <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                          </div>
+                        </div>
+                      </a>
                     ))}
                   </div>
                 </div>
@@ -233,24 +226,6 @@ export default function App() {
       <footer className="footer">
         <p>&copy; 2026 Dinis Alves. Todos os direitos reservados.</p>
       </footer>
-
-      {/* Preview Modal */}
-      {previewProject && (
-        <div className="preview-modal" onClick={() => setPreviewProject(null)}>
-          <div className="preview-modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="preview-close" onClick={() => setPreviewProject(null)}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M18 6L6 18M6 6l12 12"/>
-              </svg>
-            </button>
-            <iframe
-              src={previewProject}
-              title="Project Preview"
-              className="preview-modal-iframe"
-            />
-          </div>
-        </div>
-      )}
 
       {/* Scroll to Top Button */}
       {showScrollTop && (
